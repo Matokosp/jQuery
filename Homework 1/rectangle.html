@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rectangle Area Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="container">
+        <section class="content">
+            <h1>Rectangle Area Calculator</h1>
+            <div id="results"></div>
+        </section>
+    </main>
+    
+    <!-- Calling jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- My script -->
+    <script>
+        // Get length of rectangle
+        const length = parseFloat(prompt('Indicate the length of the rectangle'))
+        // Get width of rectangle
+        const width = parseFloat(prompt('Indicate the width of the rectangle'))
+        // Calculate area
+        const area = parseFloat(length * width)
+        // Calculate perimeter
+        const perimeter = parseFloat(length * 2 + width * 2)
+
+        // Get results container
+        const box = $('#results')
+
+        // Result data
+        const data =
+            `
+                <p>Length: <b>${length}</b> </p>
+                <p>Width: <b>${width}</b> </p>
+                <p>Area: <b>${area}</b> </p>
+                <p>Perimeter: <b>${perimeter}</b> </p>
+            `
+
+        // Place data inside result container
+        box.html(data)
+    </script>
+</body>
+</html>

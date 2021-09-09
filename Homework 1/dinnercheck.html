@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinner Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="container">
+        <section class="content">
+            <h1>Dinner Calculator</h1>
+            <div id="results"></div>
+        </section>
+    </main>
+    
+    <!-- Calling jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- My script -->
+    <script>
+        // Get the dinner cost
+        const mealCost = parseFloat(prompt('How much did dinner cost?'))
+        // Get tip percent
+        const tipPercent = parseFloat(prompt('Please provide the percent of the tip you\'ll leave'))
+        // Calculate total cost of the meal
+        const totalCost = parseFloat(mealCost + (mealCost * tipPercent / 100))
+
+        // Get results container
+        const box = $('#results')
+
+        // Result data
+        const data =
+            `
+                <p>Dinner: <b>$${mealCost}</b> </p>
+                <p>Tip: <b>${tipPercent}%</b> </p>
+                <p>Dinner total: <b>$${totalCost}</b> </p>
+            `
+
+        // Place data inside result container
+        box.html(data)
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triangle angle calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="container">
+        <section class="content">
+            <h1>Triangle angle calculator</h1>
+            <div id="results"></div>
+        </section>
+    </main>
+    
+    <!-- Calling jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- My script -->
+    <script>
+        // Get first angle
+        const angleOne = parseInt(prompt('Provide the first anfle of the triangle'))
+        // Get second angle
+        const angleTwo = parseInt(prompt('Provide the second anfle of the triangle'))
+        // Calculate third angle based on previous prompts
+        const angleThree = parseInt(180 - (angleOne + angleTwo))
+
+        // Get results container
+        const box = $('#results')
+
+        // Result data
+        const data =
+            `
+                <p>First angle: <b>${angleOne}˚</b> </p>
+                <p>Second angle: <b>${angleTwo}˚</b> </p>
+                <p>Third calculated angle: <b>${angleThree}˚</b> </p>
+            `
+
+        // Place data inside result container
+        box.html(data)
+    </script>
+</body>
+</html>
