@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triangle angle calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="container">
+        <section class="content">
+            <h1>Rectangle Area Calculator</h1>
+            <form action="rectangle.html" method="GET" class="form" id="form">
+                <label for="length">Length</label>
+                <input type="text" id="length" name="length">
+                <label for="width">Width</label>
+                <input type="text" id="width" name="width">
+                <input type="submit" id="submit" value="CALCULATE">
+            </form>
+            <div id="results"></div>
+        </section>
+    </main>
+    
+    <!-- Calling jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- My script -->
+    <script>
+        $('#submit').on('click', function(e) {
+            e.preventDefault()
+            // Get length of rectangle
+            const length = $('#length').val()
+            // Get width of rectangle
+            const width = $('#width').val()
+            // Calculate area
+            const area = parseFloat(parseInt(length) * parseInt(width))
+            // Calculate perimeter
+            const perimeter = parseFloat(parseInt(length) * 2 + parseInt(width) * 2)
+
+            // Get results container
+            const box = $('#results')
+
+            // Check if inputs are empty
+            if (length === "") {
+                box.addClass('bkg-color')
+                box.html(`<p>You need to provide the <b>length</b> to make the calculation</p>`)
+            } else if (width === "") {
+                box.addClass('bkg-color')
+                box.html(`<p>You need to provide the <b>width</b> to make the calculation</p>`)
+            } else {
+            // If inputs are not empty, compute the result
+                // Result data
+                const data =
+                `
+                    <p>Length: <b>${length}</b> </p>
+                    <p>Width: <b>${width}</b> </p>
+                    <p>Area: <b>${area}</b> </p>
+                    <p>Perimeter: <b>${perimeter}</b> </p>
+                `
+                // Place data inside result container
+                box.addClass('bkg-color')
+                box.html(data)
+                // Reset the form
+                $('#form').trigger('reset')
+            }
+        })
+    </script>
+</body>
+</html>

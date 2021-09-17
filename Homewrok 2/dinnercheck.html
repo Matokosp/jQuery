@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triangle angle calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="container">
+        <section class="content">
+            <h1>Dinner Calculator</h1>
+            <form action="rectangle.html" method="GET" class="form" id="form">
+                <label for="mealCost">How much did dinner cost?</label>
+                <input type="text" id="mealCost" name="mealCost">
+                <label for="tipPercent">Please provide the percent of the tip you'll leave</label>
+                <input type="text" id="tipPercent" name="tipPercent">
+                <input type="submit" id="submit" value="CALCULATE">
+            </form>
+            <div id="results"></div>
+        </section>
+    </main>
+    
+    <!-- Calling jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- My script -->
+    <script>
+        $('#submit').on('click', function(e) {
+            e.preventDefault()
+             // Get the dinner cost
+            const mealCost = $('#mealCost').val()
+            // Get tip percent
+            const tipPercent = $('#tipPercent').val()
+            // Calculate total cost of the meal
+            const totalCost = parseFloat(parseInt(mealCost) + (parseInt(mealCost) * parseInt(tipPercent) / 100))
+
+            // Get results container
+            const box = $('#results')
+
+            // Check if inputs are empty
+            if (mealCost === "") {
+                box.addClass('bkg-color')
+                box.html(`<p>You need to provide the meal cost</p>`)
+            } else if (tipPercent === "") {
+                box.addClass('bkg-color')
+                box.html(`<p>You need to leave a tip!!!</p>`)
+            } else {
+            // If inputs are not empty, compute the result
+                // Result data
+                const data =
+                `
+                    <p>Dinner: <b>$${mealCost}</b> </p>
+                    <p>Tip: <b>${tipPercent}%</b> </p>
+                    <p>Dinner total: <b>$${totalCost}</b> </p>
+                `
+                // Place data inside result container
+                box.addClass('bkg-color')
+                box.html(data)
+                // Reset the form
+                $('#form').trigger('reset')
+            }
+        })
+    </script>
+</body>
+</html>

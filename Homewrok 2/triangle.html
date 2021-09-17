@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triangle angle calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="container">
+        <section class="content">
+            <h1>Triangle angle calculator</h1>
+            <form action="triangle.html" method="GET" class="form" id="form">
+                <label for="angleOne">Angle One</label>
+                <input type="text" id="angleOne" name="angleOne">
+                <label for="angleTwo">Angle Two</label>
+                <input type="text" id="angleTwo" name="Angle Two">
+                <input type="submit" id="submit" value="CALCULATE">
+            </form>
+            <div id="results"></div>
+        </section>
+    </main>
+    
+    <!-- Calling jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- My script -->
+    <script>
+        $('#submit').on('click', function(e) {
+            e.preventDefault()
+            // Get first angle
+            const angleOne = $('#angleOne').val()
+            // Get second angle
+            const angleTwo = $('#angleTwo').val()
+            // Calculate third angle based on previous prompts
+            const angleThree = parseInt(180 - (parseInt(angleOne) + parseInt(angleTwo)))
+
+            // Get results container
+            const box = $('#results')
+
+            // Check if inputs are empty
+            if (angleOne === "" || angleTwo === "") {
+                box.addClass('bkg-color')
+                box.html(`<p>You need to provide two angles to make the calculation</p>`)
+            } else {
+            // If inputs are not empty, compute the result
+                // Result data
+                const data =
+                `
+                    <p>First angle: <b>${angleOne}˚</b> </p>
+                    <p>Second angle: <b>${angleTwo}˚</b> </p>
+                    <p>Third calculated angle: <b>${angleThree}˚</b> </p>
+                `
+
+                // Place data inside result container
+                box.addClass('bkg-color')
+                box.html(data)
+                // Reset the form
+                $('#form').trigger('reset')
+            }
+             
+        })
+    </script>
+</body>
+</html>
